@@ -1,0 +1,43 @@
+<h1>Say a color and watch the circle change!</h1>
+<div class="color-circle">
+    <div class="circle"></div>
+</div>
+<button class="btn btn-primary" id="speak" type="button">Speak</button>
+</html>
+
+<style>
+.color-circle {
+    --circle-color: black;
+    width: 140px;
+    height: 140px;
+}
+.circle {
+    background-color: var(--circle-color);
+    width: 100px;
+      height: 100px;
+      border-radius: 50px;
+}
+</style>
+		<script>
+            window.addEventListener("DOMContentLoaded",	() => {
+            window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition(),
+            colorName = document.querySelector('.color-name'),
+            colorCircle = document.querySelector('.color-circle'),
+            cssColorNames = ["pink", "blue", "green","yellow", "black","white", "purple", "orange"];
+recognition.start();
+recognition.addEventListener('result', e => {
+    const transcript = e.results[0][0].transcript.toLowerCase().replace(/\s/g, '')
+        //   confidence = (e.results[0][0].confidence * 100).toFixed(1);
+    if(cssColorNames.includes(transcript)) {
+        colorCircle.style.setProperty('--circle-color', transcript);
+    }else{
+        Speech.text.help;
+    }
+});
+ recognition.addEventListener('end', recognition.start);
+
+});
+		</script>
+	</body>
+</html>

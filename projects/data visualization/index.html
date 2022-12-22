@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<body>
+            <canvas id="bar"></canvas>
+        	 <canvas id="Pie"></canvas>
+          	
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+        <script>
+        var canvas = document.getElementById("bar").getContext("2d");
+    var myChart = new Chart(canvas, {
+        type: 'bar',
+        data: {
+            labels: ["BROOKLYN","MANHATTAN","BRONX","QUEENS","STATEN ISLAND"],
+            datasets: [{
+                data: [426,306,198,361,56.6],
+                backgroundColor: ["green","orange","black","yellow","purple"],
+            }]
+        },
+        options: {
+            title:{
+                display: true,
+                text: 'Car crashes by Borough(in thousands)',
+            },
+        }
+    });
+        
+
+    var canvas = document.getElementById("Pie").getContext("2d");
+    var myChart = new Chart(canvas, {
+        type: 'doughnut',
+        data: {
+            labels: ["Februrary 29th, 2020", "March 29th, 2020", "April 29th, 2020", "May 29th 2020", "June 29th 2020"
+        , "July 29th 2020"],
+            datasets: [{
+                data: [1, 3560, 2340, 638, 437, 258],
+                backgroundColor: ["pink","green","blue","orange","yellow", "purple"],
+            }]
+        },
+        options: {
+            title:{
+                display: true,
+                text: 'COVID CASES IN 2020',
+            },
+        }
+    }
+    );
+
+        </script>
+    </body> 
+</html>

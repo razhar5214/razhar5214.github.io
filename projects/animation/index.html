@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <canvas id="canvas">
+      <style>
+        body{
+          background-color: rgb(112, 112, 254);
+        }
+          #lighting-text{
+              font-size: 25px;
+                transform: translate(250%, -2100%);
+                background-color: rgb(137, 251, 129);
+                width: 150px;
+          }
+      </style>
+      <script>
+        var canvasWidth = 700;
+        var canvasHeight = 650;
+        var spriteWidth =  2490;
+        var spriteHeight = 1015;
+        var rows = 5;
+        var cols = 5;
+        var trackRight = 0;
+        var trackLeft = 1;
+        var width = spriteWidth / cols;
+        var height = spriteHeight / rows;
+        var curFrame = 0;
+        var frameCount = 5;
+        var x = 0;
+        var y = 0;
+        var srcX = 0;
+        var srcY = 0;
+        var left = false;
+        var right = true;
+        var speed = -10;
+        var canvas = document.getElementById("canvas");
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        var ctx = canvas.getContext("2d");
+        var character = new Image();
+        character.src = "./images/ezgif.com-gif-maker.png";
+        var rowCount = 5 ;
+        function updateFrame() {
+          curFrame = curFrame % cols;
+          srcX = curFrame * width;
+          srcY = rowCount * height;
+
+          ctx.clearRect(x, y, width, height);
+        }
+
+        function draw() {
+          updateFrame();
+          if(rowCount < 5){
+            rowCount++;
+          }else{
+            rowCount = 0;
+          }
+          ctx.drawImage( character,srcX,srcY,width,height, x,y,width,height);
+        }
+        setInterval(draw, 400);
+      </script>
+    </canvas> 
+  </head>
+  <body>
+    <p id="lighting-text">
+       I'm super fast!
+    </p>
+  </body>
+</html>
